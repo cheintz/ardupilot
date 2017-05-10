@@ -259,6 +259,7 @@ void Plane::update_sensor_status_flags(void)
         break;
 
     case AUTO:
+	case FOLLOW_REL_POS:
     case RTL:
     case LOITER:
     case AVOID_ADSB:

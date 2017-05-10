@@ -491,6 +491,9 @@ void Plane::set_mode(enum FlightMode mode, mode_reason_t reason)
             auto_state.vtol_mode = true;
         }
         break;
+	case FOLLOW_REL_POS:
+		follow_rel_pos_init();
+		break;
     }
 
     // start with throttle suppressed in auto_throttle modes
@@ -533,6 +536,7 @@ bool Plane::mavlink_set_mode(uint8_t mode)
     case QLOITER:
     case QLAND:
     case QRTL:
+	case FOLLOW_REL_POS:
         set_mode((enum FlightMode)mode, MODE_REASON_GCS_COMMAND);
         return true;
     }
@@ -738,6 +742,8 @@ void Plane::print_flight_mode(AP_HAL::BetterStream *port, uint8_t mode)
     case QRTL:
         port->print("QRTL");
         break;
+	case FOLLOW_REL_POS:
+		port->print("FOLLOW_REL_POS");
     default:
         port->printf("Mode(%u)", (unsigned)mode);
         break;
@@ -811,6 +817,8 @@ void Plane::notify_flight_mode(enum FlightMode mode)
     case QRTL:
         notify.set_flight_mode_str("QRTL");
         break;
+	case FOLLOW_REL_POS
+		notify.set_flight_mode_str("FOLLOW_REL_POS");
     default:
         notify.set_flight_mode_str("----");
         break;

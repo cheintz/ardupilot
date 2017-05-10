@@ -769,7 +769,9 @@ void Plane::update_flight_mode(void)
         nav_pitch_cd = constrain_int32(nav_pitch_cd, pitch_limit_min_cd, aparm.pitch_limit_max_cd.get());
         break;
     }
-        
+	case FOLLOW_REL_POS:
+		follow_rel_pos_run();
+		
     case INITIALISING:
         // handled elsewhere
         break;

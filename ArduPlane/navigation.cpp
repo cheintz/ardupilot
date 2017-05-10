@@ -285,3 +285,30 @@ bool Plane::reached_loiter_target(void)
     return nav_controller->reached_loiter_target();
 }
     
+void Plane::setup_follow_rel_pos(void)
+{
+	//Do stuff
+}
+
+void Plane::update_follow_rel_pos(void)
+{
+	//algorithm 
+	nav_controller ->set_target_lat_accel(); // in m/s^2? 
+	
+	change_target_altitude();// in meters???
+	//how to change target airspeed?
+	
+	 SpdHgt_Controller->update_pitch_throttle(relative_target_altitude_cm(),
+                                                 target_airspeed_cm,
+                                                 flight_stage,
+                                                 distance_beyond_land_wp,
+                                                 get_takeoff_pitch_min_cd(),
+                                                 throttle_nudge,
+                                                 tecs_hgt_afe(),
+													aerodynamic_load_factor);
+	
+	
+	calc_throttle(); // not sure if these need to be called
+	calc_nav_pitch();
+	
+}

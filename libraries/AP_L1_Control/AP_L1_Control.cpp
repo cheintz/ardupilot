@@ -456,3 +456,9 @@ void AP_L1_Control::update_level_flight(void)
 
     _data_is_stale = false; // status are correctly updated with current waypoint data
 }
+
+//Override lateral acceleartion demand for relative position following
+void AP_L1_Control::set_target_lat_accel(float accel)
+{
+	_latAccDem = accel;
+}

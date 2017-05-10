@@ -34,6 +34,7 @@ void Plane::failsafe_short_on_event(enum failsafe_state fstype, mode_reason_t re
         break;
         
     case AUTO:
+	case FOLLOW_REL_POS:
     case AVOID_ADSB:
     case GUIDED:
     case LOITER:
@@ -94,6 +95,7 @@ void Plane::failsafe_long_on_event(enum failsafe_state fstype, mode_reason_t rea
         break;
         
     case AUTO:
+	case FOLLOW_REL_POS:
     case AVOID_ADSB:
     case GUIDED:
     case LOITER:

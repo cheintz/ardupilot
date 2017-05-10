@@ -67,6 +67,8 @@ public:
     void set_reverse(bool reverse) {
         _reverse = reverse;
     }
+	//Override lateral acceleartion demand for relative position following
+	void set_target_lat_accel(float accel);
 
 private:
     // reference to the AHRS object

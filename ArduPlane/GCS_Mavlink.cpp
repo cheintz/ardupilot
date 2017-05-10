@@ -45,6 +45,7 @@ void Plane::send_heartbeat(mavlink_channel_t chan)
         base_mode = MAV_MODE_FLAG_STABILIZE_ENABLED;
         break;
     case AUTO:
+	case FOLLOW_REL_POS:
     case RTL:
     case LOITER:
     case AVOID_ADSB:
@@ -937,7 +938,7 @@ void GCS_MAVLINK_Plane::handleMessage(mavlink_message_t* msg)
     {
         handle_request_data_stream(msg, true);
         break;
-    }
+    }power
 
     case MAVLINK_MSG_ID_STATUSTEXT:
     {
